@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rishikeshav Jha - responsive personal portfolio">
+  <title>Rishikeshav Jha | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="#home">RJ<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">COMPUTER ENGINEERING STUDENT</p>
+          <h1>Hi, I'm <span>Rishikeshav Jha</span></h1>
+          <p class="hero-desc">I enjoy building clean, responsive and practical web applications using modern web technologies.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="avatar">RJ</div>
+          <h2>Web Developer</h2>
+          <p>HTML • CSS • JavaScript • React • Node.js</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <p class="section-label">ABOUT ME</p>
+        <h2 class="section-title">A curious learner who likes to build.</h2>
+        <div class="about-grid">
+          <p>I am a Computer Engineering student interested in software development and web technologies. I like turning ideas into simple, useful and user-friendly applications.</p>
+          <p>This portfolio demonstrates HTML structure, CSS selectors and responsive styling, along with JavaScript interactions such as navigation, theme switching and form handling.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section alt">
+      <div class="container">
+        <p class="section-label">PROJECTS</p>
+        <h2 class="section-title">Things I've worked on</h2>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-number">01</div>
+            <h3>React To-Do List</h3>
+            <p>A component-based task manager demonstrating state, props and interactive UI design.</p>
+            <div class="tags"><span>React</span><span>CSS</span><span>JavaScript</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-number">02</div>
+            <h3>MongoDB Library</h3>
+            <p>A simple library database demonstrating documents, collections, CRUD operations and queries.</p>
+            <div class="tags"><span>MongoDB</span><span>Node.js</span><span>Database</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-number">03</div>
+            <h3>Real-Time Chat</h3>
+            <p>A web chat application concept using Express and Socket.IO for real-time communication.</p>
+            <div class="tags"><span>Express</span><span>Socket.IO</span><span>REST</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <p class="section-label">SKILLS</p>
+        <h2 class="section-title">My technology toolkit</h2>
+        <div class="skills-grid">
+          <div class="skill">HTML5</div><div class="skill">CSS3</div><div class="skill">JavaScript</div>
+          <div class="skill">React</div><div class="skill">Node.js</div><div class="skill">Express.js</div>
+          <div class="skill">MongoDB</div><div class="skill">Git & GitHub</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section alt">
+      <div class="container contact-grid">
+        <div>
+          <p class="section-label">CONTACT</p>
+          <h2 class="section-title">Let's connect.</h2>
+          <p>If you'd like to discuss a project, internship or collaboration, send a message using the form.</p>
+        </div>
+        <form id="contactForm" class="contact-form">
+          <label>Name<input type="text" id="name" required placeholder="Your name"></label>
+          <label>Email<input type="email" id="email" required placeholder="you@example.com"></label>
+          <label>Message<textarea id="message" rows="5" required placeholder="Write your message..."></textarea></label>
+          <button class="btn primary" type="submit">Send Message</button>
+          <p id="formMessage" class="form-message"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>© 2026 Rishikeshav Jha. Built with HTML, CSS & JavaScript.</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
