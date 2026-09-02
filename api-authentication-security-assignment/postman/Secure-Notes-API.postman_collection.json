@@ -1,0 +1,86 @@
+{
+  "info": {
+    "name": "Secure Notes API - Authentication Tests",
+    "_postman_id": "8b4f5a55-1b3a-4a74-a9d4-secure-notes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key": "baseUrl", "value": "http://localhost:3000"},
+    {"key": "token", "value": ""}
+  ],
+  "item": [
+    {
+      "name": "1 - Login and receive token",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"student\",\n  \"password\": \"Password123!\"\n}"
+        },
+        "url": {"raw": "{{baseUrl}}/login", "host": ["{{baseUrl}}"], "path": ["login"]}
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Login succeeds', function () { pm.response.to.have.status(200); });",
+              "const json = pm.response.json();",
+              "pm.environment.set('token', json.token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "2 - Protected profile without token (should fail)",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "{{baseUrl}}/api/profile", "host": ["{{baseUrl}}"], "path": ["api", "profile"]}
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {"exec": ["pm.test('Returns 401', function () { pm.response.to.have.status(401); });"]}
+        }
+      ]
+    },
+    {
+      "name": "3 - Protected profile with Bearer token",
+      "request": {
+        "method": "GET",
+        "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+        "url": {"raw": "{{baseUrl}}/api/profile", "host": ["{{baseUrl}}"], "path": ["api", "profile"]}
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {"exec": ["pm.test('Returns 200', function () { pm.response.to.have.status(200); });"]}
+        }
+      ]
+    },
+    {
+      "name": "4 - Protected notes with Bearer token",
+      "request": {
+        "method": "GET",
+        "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+        "url": {"raw": "{{baseUrl}}/api/notes", "host": ["{{baseUrl}}"], "path": ["api", "notes"]}
+      }
+    },
+    {
+      "name": "5 - Invalid token (should fail)",
+      "request": {
+        "method": "GET",
+        "header": [{"key": "Authorization", "value": "Bearer invalid-token"}],
+        "url": {"raw": "{{baseUrl}}/api/profile", "host": ["{{baseUrl}}"], "path": ["api", "profile"]}
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {"exec": ["pm.test('Returns 401', function () { pm.response.to.have.status(401); });"]}
+        }
+      ]
+    }
+  ]
+}
